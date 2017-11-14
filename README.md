@@ -39,15 +39,17 @@ Creare il certificato e la chiave:
     /usr/sbin/shib-keygen -e https://spid.example.org/sp -h spid.example.org -o .
     
 (il risultato sono i file: sp-key.pem e sp-cert.pem); creare una bozza di
-metadato:
+metadato con il comando su una sola riga:
 
-    /usr/bin/shib-metagen -c sp-cert.pem -h spid.example.org -e https://spid.example.org/sp -L -f urn:oasis:names:tc:SAML:2.0:nameid-format:transient -o "Ente di esempio"
+    /usr/bin/shib-metagen -c sp-cert.pem -h spid.example.org \
+    -e https://spid.example.org/sp -L \
+    -f urn:oasis:names:tc:SAML:2.0:nameid-format:transient \
+    -o "Ente di esempio" -u "http://www.example.org"
     
 modificare a mano il metadato:
     
-1) fix dell'url dell'ente in OrganizationURL;
-2) aggiunta attributo use="signing" all'elemento `<md:KeyDescriptor>`
-3) aggiunta elementi `<md:AttributeConsumingService>`, ad esempio:
+1) aggiunta attributo use="signing" all'elemento `<md:KeyDescriptor>`
+2) aggiunta elementi `<md:AttributeConsumingService>`, ad esempio:
 
        <md:AttributeConsumingService index="0">
         <md:ServiceName xml:lang="it">EXAMPLE_ORG_SERVICE</md:ServiceName>
