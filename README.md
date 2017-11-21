@@ -61,11 +61,15 @@ modificare a mano il metadato:
        </md:AttributeConsumingService>
 
   (dentro l'elemento SPSSODescriptor);
-3) firma con il comando:
+
+firmare con il comando:
 
        samlsign -s -k signature.key.pem -c signature.crt.pem -f sp-metadata.xml \ 
        -alg http://www.w3.org/2001/04/xmldsig-more#rsa-sha256 \
-       -dig http://www.w3.org/2001/04/xmlenc#sha256 > sp-signed-metadata.xml  
+       -dig http://www.w3.org/2001/04/xmlenc#sha256 > sp-signed-metadata.xml
+       
+il file risultante sp-signed-metadata.xml è da pubblicare su un sito https 
+il cui url è da comunicare da AgID.         
 
 ## attribute-map.xml
 
