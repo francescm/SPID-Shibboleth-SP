@@ -48,8 +48,9 @@ metadato con il comando su una sola riga:
     
 modificare a mano il metadato:
     
-1) aggiunta attributo use="signing" all'elemento `<md:KeyDescriptor>`
-2) aggiunta elementi `<md:AttributeConsumingService>`, ad esempio:
+1) aggiunta dell'attributo ID nell'elemento EntityDescriptor;   
+2) aggiunta attributo use="signing" all'elemento `<md:KeyDescriptor>`;
+3) aggiunta elementi `<md:AttributeConsumingService>`, ad esempio:
 
        <md:AttributeConsumingService index="0">
         <md:ServiceName xml:lang="it">EXAMPLE_ORG_SERVICE</md:ServiceName>
@@ -59,7 +60,12 @@ modificare a mano il metadato:
         <md:RequestedAttribute Name="email"/>
        </md:AttributeConsumingService>
 
-  (dentro l'elemento SPSSODescriptor)
+  (dentro l'elemento SPSSODescriptor);
+3) firma con il comando:
+
+       samlsign -s -k signature.key.pem -c signature.crt.pem -f sp-metadata.xml \ 
+       -alg http://www.w3.org/2001/04/xmldsig-more#rsa-sha256 \
+       -dig http://www.w3.org/2001/04/xmlenc#sha256 > sp-signed-metadata.xml  
 
 ## attribute-map.xml
 
