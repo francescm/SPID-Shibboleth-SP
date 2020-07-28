@@ -81,7 +81,7 @@ firmare con il comando:
        -dig http://www.w3.org/2001/04/xmlenc#sha256 > sp-signed-metadata.xml
        
 il file risultante sp-signed-metadata.xml è da pubblicare su un sito https 
-il cui url è da comunicare da AgID.
+il cui url è da comunicare ad AgID.
 I file `signature.key.pem` e `signature.crt.pem` sono ad esempio un 
 certificato personale Terena DigiCert convertito in formato X509.
 
